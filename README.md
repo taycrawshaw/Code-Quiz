@@ -1,5 +1,34 @@
 # Module 6 Challenge Web APIs: Code Quiz
 
+
+display questions 
+take user choice as clicked Li
+(user choice = current target)
+
+if user choice !== null then  { 
+if user choice matches current correct answer then correct +1 & glow green 
+if user choice doesn't match correct answer then + 5s to time  }
+
+
+Function - next question 
+reset user choice to null & currentQ + 1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Your Task
 
 As you proceed in your journey to becoming a front-end web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 

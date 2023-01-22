@@ -21,4 +21,14 @@ let Questions = [{
     question: 'The Eiffel Tower is located in which following country?',
     choices: ['Italy', 'France', 'Iceland', 'Mexico'],
     correctAnswer: 1
-}];
+},
+{   
+    question: 'The Eiffel Tower is located in which following country?',
+    choices: ['Italy', 'France', 'Iceland', 'Mexico'],
+    correctAnswer: 1
+}
+
+
+
+
+];
