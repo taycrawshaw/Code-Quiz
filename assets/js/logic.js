@@ -55,14 +55,14 @@ function thanksScreen() {
 
 
 
-let leaderboardTitle = document.createElement("h1")
+let thanksTitle = document.createElement("h1")
 let scoreL = document.createElement("ol");
 
 
-leaderboardTitle.textContent = "Thanks for playing!"
+thanksTitle.textContent = "Thanks for playing!"
 
 
-feedbackscreen.append(leaderboardTitle);
+feedbackscreen.append(thanksTitle);
 feedbackscreen.appendChild(scoreL)
 
 
@@ -263,19 +263,13 @@ li4.addEventListener("click", function(){
 }
 
 
-function orderLeaderboard() {
-for (let i = 0; i < 5; i++)
-    if (leaderboard[i][1] > leaderboard[i-1][1]) {
 
-        leaderboard[i][1] = leaderboard[i-1][1]
-        leaderboard[i][0] = leaderboard[i-1][0]
-
-
-    }
-}
 
 //let storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard"));
 //console.log(storedLeaderboard);
+
+
+
 
 
 initScores()
@@ -306,15 +300,15 @@ submitInitials.addEventListener("click", function(event) {
     thanksScreen()
 
     let UserInitial = initialInput.value
+    let capitalInitial = UserInitial.toUpperCase()
 
-
-userProfile.push(UserInitial, correctscore);
+userProfile.push(capitalInitial, correctscore);
 
 
 leaderboard.push(userProfile)
 
 
-
+// sort leaderboard array by largest first, converted to JSON and then reuploaded to local storage
 leaderboard = leaderboard.sort((a, b) => a[1] - b[1]).reverse();
 localStorage.setItem("leaderboard", JSON.stringify(leaderboard))
 console.log(leaderboard);
