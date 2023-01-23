@@ -18,8 +18,15 @@ reset user choice to null & currentQ + 1
 
 
 
+trigger sounds on correct/incorrect functions
+
+change screen on end of timer 
+upload inital and score into 2d array 
+create li for top 5 and update text content 
 
 
+
+make final timing freeze 
 
 
 

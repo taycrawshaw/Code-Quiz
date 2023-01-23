@@ -3,30 +3,31 @@
 
 
 let Questions = [{
-    question: 'What is the capital city of Australia?',
-    choices: ['Sydney', 'Melbourne', 'Canberra', 'London'],
-    correctAnswer: 2
-},
-{
-    question: 'Who won the 2014 FIFA World Cup?',
-    choices: ['Brazil', 'England', 'Germany', 'Spain'],
-    correctAnswer: 2
-},
-{
-    question: 'What book series is authored by J.K Rowling?',
-    choices: ['Game of Thrones', 'Hunger Games', 'Twilight', 'Harry Potter'],
+    question: 'How do we put Javascript inside HTML?',
+    choices: ['<js>', '<javascript>', '<scripting>', '<script>'],
     correctAnswer: 3
 },
-{   
-    question: 'The Eiffel Tower is located in which following country?',
-    choices: ['Italy', 'France', 'Iceland', 'Mexico'],
-    correctAnswer: 1
+{
+    question: 'Which of the keyword is used to define the variable in the javascript?',
+    choices: ['var', 'let', 'both A & B', 'for'],
+    correctAnswer: 2
 },
-{   
-    question: 'The Eiffel Tower is located in which following country?',
-    choices: ['Italy', 'France', 'Iceland', 'Mexico'],
-    correctAnswer: 1
-}
+{
+    question: 'which of the method is used to get HTML element in Javascript?',
+    choices: ['getElementbyId()', 'getElementsByClassName()', 'Both A & B', 'AppendChild()'],
+    correctAnswer: 2
+},
+
+{
+    question: 'Which of the following is not a javascript framework?',
+    choices: ['Vue', 'React', 'Node', 'Laravel'],
+    correctAnswer: 3
+},
+{
+    question: 'Which type of language is JavaScript?',
+    choices: ['Object oriented', 'Object based', 'Functional', 'Crash'],
+    correctAnswer: 0
+},
 
 
 

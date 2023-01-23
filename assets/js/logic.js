@@ -9,6 +9,7 @@ let choices = document.querySelector("#choices")
 let lis = document.querySelectorAll("li")
 time = (Questions.length * 10)
 timeEl.textContent = time;
+let finaltime;
 
 let listEl = document.createElement("ol");
 let li1 = document.createElement("li")
@@ -16,57 +17,115 @@ let li2 = document.createElement("li")
 let li3 = document.createElement("li")
 let li4 = document.createElement("li")
 
+let endscreen = document.querySelector("#end-screen");
+let finalscore = document.querySelector("#final-score");
 
+let initialInput = document.querySelector("#initials");
+let submitInitials = document.querySelector("#submit"); 
+
+let scoresList = []
+
+let feedbackscreen = document.querySelector("#feedback");
+
+let userProfile = []
+let leaderboard = []
 
 let currentQ = 0
 let correctscore = 0; 
 let currentAnswer = Questions[currentQ].correctAnswer
 let userchoice 
 
+function initScores() {
+let storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard"));
+
+if (storedLeaderboard !== null) {
+    leaderboard = leaderboard.concat(storedLeaderboard);
+}
+
+
+
+
+}
+
+function thanksScreen() {
+    endscreen.classList.add("hide");
+    feedbackscreen.classList.remove("hide")
+
+   
+
+
+
+let leaderboardTitle = document.createElement("h1")
+let scoreL = document.createElement("ol");
+
+
+leaderboardTitle.textContent = "Thanks for playing!"
+
+
+feedbackscreen.append(leaderboardTitle);
+feedbackscreen.appendChild(scoreL)
+
+
+}
+
+
+function timeUp() {
+    console.log(correctscore);
+}
+
+function scorePage() {
+    choiceScreen.classList.add("hide");
+    endscreen.classList.remove("hide");
+    finalscore.textContent = correctscore;
+}
+
 function countdown() {    // init countdown - 10 seconds for each
     let timeInterval = setInterval(function() {
-if (time > 1) {
+
+        if (time > 0) {
     timeEl.textContent = time;
     time--;
 }
+
+
 else {
 
      timeEl.textContent = time;
      clearInterval(timeInterval);
+     timeUp();
+     scorePage();
 } 
     }, 1000);
-}
 
-function questdelay() {
-    let timeInterval = setInterval(function() {
-        if (delay > 1) {
-            delay--;
-        }
-        else {
-        
-      
-             clearInterval(timeInterval);
-        } 
-            }, 1000);
+
 
 
 
 }
 
 
-function wait(ms) {
-    var time = new Date();
-    var millisecs = time.getTime();
-    var startTime = millisecs;
-    var currentTime = millisecs;
-    while(currentTime - startTime < ms) {
-    time = new Date();
-    currentTime = time.getTime();
+
+
+function ifDone() {
+
+    if (currentQ < (Questions.length - 1)) {
+        currentQ++;
+
+        resetQs();
     }
-  }
 
+ else {
+   
+    scorePage()
+    
+ }
+    
+}
 
-
+function correctNoise () {
+	let correctSound = Audio()
+	correctSound.play();
+}
 
 
 function incorrectAnswer(lil) {    
@@ -74,15 +133,25 @@ function incorrectAnswer(lil) {
     lil.setAttribute(
         "style", "background-color: red");
     currentQ++;
-    resetQs()
-
-
-
+    ifDone()
     
+}
+
+function correct(liNo) {
+    console.log("correccrttt!");
+    correctscore++;
+    liNo.setAttribute(
+        "style", "background-color: green");
+     
+        ifDone()
+        
 }
 
 function resetQs() {
 
+    if (currentQ > 5) {
+        return;
+    }
  
     questTitle.textContent = Questions[currentQ].question; 
     let option1 = Questions[currentQ].choices[0];
@@ -96,6 +165,7 @@ function resetQs() {
 
 
     currentAnswer = Questions[currentQ].correctAnswer
+    
 
 
     li1.setAttribute(
@@ -110,18 +180,7 @@ function resetQs() {
 }
 
 
-function correct(liNo) {
-    console.log("correccrttt!");
-    correctscore++;
-    liNo.setAttribute(
-        "style", "background-color: green");
-     
-        currentQ++;
-  
-        resetQs();
-        
-        
-}
+
 
 console.log(currentAnswer);
 
@@ -203,17 +262,23 @@ li4.addEventListener("click", function(){
 
 }
 
-function nextQuestion() {
 
+function orderLeaderboard() {
+for (let i = 0; i < 5; i++)
+    if (leaderboard[i][1] > leaderboard[i-1][1]) {
+
+        leaderboard[i][1] = leaderboard[i-1][1]
+        leaderboard[i][0] = leaderboard[i-1][0]
+
+
+    }
 }
 
+//let storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard"));
+//console.log(storedLeaderboard);
 
 
-
-
-console.log(Questions[currentQ])
-
-
+initScores()
 
 function startGame() {
 countdown() 
@@ -234,3 +299,25 @@ startBtn.addEventListener("click", function() {
 
 }
 ) 
+
+submitInitials.addEventListener("click", function(event) {
+    event.preventDefault
+    
+    thanksScreen()
+
+    let UserInitial = initialInput.value
+
+
+userProfile.push(UserInitial, correctscore);
+
+
+leaderboard.push(userProfile)
+
+
+
+leaderboard = leaderboard.sort((a, b) => a[1] - b[1]).reverse();
+localStorage.setItem("leaderboard", JSON.stringify(leaderboard))
+console.log(leaderboard);
+})
+
+
