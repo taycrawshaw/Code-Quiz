@@ -133,25 +133,21 @@ function correctNoise () {
 }
 
 
-function incorrectAnswer(lil) {    
+function incorrectAnswer() {    
     time -= 10;
-    lil.setAttribute(
-        "style", "background-color: red");
-    
+        result.textContent = "Incorrect!";
+        result.setAttribute("style", "color: red; font-weight: bold; font-size: 40px; text-align: center;")
     ifDone()
     
 }
 
-function correct(liNo) {
-    console.log("correccrttt!");
+function correct() {
+   
     correctscore++;
-    liNo.setAttribute(
-        "style", "background-color: green");
-    result.textContent = "Correct";
-        liNo.setAttribute(
-            "style", "background-color: green");
-        
-        ifDone()
+
+    result.textContent = "Correct!";
+    result.setAttribute("style", "color: green; font-weight: bold; font-size: 40px; text-align: center;")
+ifDone()
         
 }
 
@@ -171,27 +167,59 @@ function resetQs() {
     let option4 = Questions[currentQ].choices[3];
     li4.textContent = option4; 
 
-    li1.setAttribute("style", "background-color: red")
 
     currentAnswer = Questions[currentQ].correctAnswer
     
+    colorChoices()
 
 
-    li1.setAttribute(
-        "style", "background-color: white");
-        li2.setAttribute(
-            "style", "background-color: white");  
-            li3.setAttribute(
-                "style", "background-color: white");  
-                li4.setAttribute(
-                    "style", "background-color: white");
-    
 }
 
 
 
 
+function colorChoices() {
+// initial set base color 
+    li1.setAttribute(
+        "style", "color: white; background-color: purple; margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold");
+        li2.setAttribute(
+            "style", "color: white;background-color: purple; margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold");  
+            li3.setAttribute(
+                "style", "color: white; background-color: purple; margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold");  
+                li4.setAttribute(
+                    "style", "color: white; background-color: purple; margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold");
+    
+// set mouse on color change 
 
+li1.addEventListener('mouseover', (event) => {
+    li1.setAttribute("style", "background-color: rgb(126, 126, 68); margin: 20px; padding: 15px ; border-radius: 25px; font-weight: bold; cursor: pointer")
+});
+li2.addEventListener('mouseover', (event) => {
+    li2.setAttribute("style", "background-color: rgb(126, 126, 68); margin: 20px; padding: 15px ; border-radius: 25px; font-weight: bold; cursor: pointer")
+});
+li3.addEventListener('mouseover', (event) => {
+    li3.setAttribute("style", "background-color: rgb(126, 126, 68); margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold; cursor: pointer")
+});
+li4.addEventListener('mouseover', (event) => {
+    li4.setAttribute("style", "background-color: rgb(126, 126, 68); margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold; cursor: pointer")
+});
+
+// set mouse off color change 
+
+li1.addEventListener('mouseout', (event) => {
+    li1.setAttribute("style", "color: white; background-color: purple; margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold")
+});
+li2.addEventListener('mouseout', (event) => {
+    li2.setAttribute("style", "color: white; background-color: purple; margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold")
+});
+li3.addEventListener('mouseout', (event) => {
+    li3.setAttribute("style", "color: white;background-color: purple; margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold")
+}); 
+li4.addEventListener('mouseout', (event) => {
+    li4.setAttribute("style", "color: white;background-color: purple; margin: 20px; padding: 15px; border-radius: 25px; font-weight: bold")
+});
+
+}
 
 
 function displayQuestion() {
@@ -215,7 +243,7 @@ listEl.appendChild(li2);
 listEl.appendChild(li3);
 listEl.appendChild(li4);
 
-
+colorChoices()
 
 li1.addEventListener("click", function(){
     console.log(option1)
