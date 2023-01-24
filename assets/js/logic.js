@@ -17,6 +17,9 @@ let li2 = document.createElement("li")
 let li3 = document.createElement("li")
 let li4 = document.createElement("li")
 
+let result = document.querySelector("#result");
+
+
 let endscreen = document.querySelector("#end-screen");
 let finalscore = document.querySelector("#final-score");
 
@@ -34,6 +37,8 @@ let currentQ = 0
 let correctscore = 0; 
 let currentAnswer = Questions[currentQ].correctAnswer
 let userchoice 
+
+
 
 function initScores() {
 let storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard"));
@@ -129,10 +134,10 @@ function correctNoise () {
 
 
 function incorrectAnswer(lil) {    
-    time -= 5;
+    time -= 10;
     lil.setAttribute(
         "style", "background-color: red");
-    currentQ++;
+    
     ifDone()
     
 }
@@ -142,14 +147,17 @@ function correct(liNo) {
     correctscore++;
     liNo.setAttribute(
         "style", "background-color: green");
-     
+    result.textContent = "Correct";
+        liNo.setAttribute(
+            "style", "background-color: green");
+        
         ifDone()
         
 }
 
 function resetQs() {
 
-    if (currentQ > 5) {
+    if (currentQ > Questions.length) {
         return;
     }
  
@@ -163,6 +171,7 @@ function resetQs() {
     let option4 = Questions[currentQ].choices[3];
     li4.textContent = option4; 
 
+    li1.setAttribute("style", "background-color: red")
 
     currentAnswer = Questions[currentQ].correctAnswer
     
@@ -182,7 +191,7 @@ function resetQs() {
 
 
 
-console.log(currentAnswer);
+
 
 
 function displayQuestion() {

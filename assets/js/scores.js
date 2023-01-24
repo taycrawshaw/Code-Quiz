@@ -1,15 +1,6 @@
 let leaderboard = [];
 let storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard"));
-
-if (storedLeaderboard !== null) {
-    leaderboard = leaderboard.concat(storedLeaderboard);
-}
-
-
-
-
-
-
+let clearButton = document.querySelector("#clear");
 
 function displayScores() {
     
@@ -24,6 +15,23 @@ function displayScores() {
     }
     }
 
+
+
+function clearLocalStorage() {
+        localStorage.clear();
+        location. reload()
+    }
+
+
+
+if (storedLeaderboard !== null) {
+    leaderboard = leaderboard.concat(storedLeaderboard);
+}
+
+
+clearButton.addEventListener("click", function() {
+    clearLocalStorage()
+})
 
 
 

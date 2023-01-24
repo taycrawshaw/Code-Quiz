@@ -87,3 +87,8 @@ li:nth-child(odd) {
   right: 10px;
 }
 
+
+
+li:hover {
+  background-color: rgb(126, 126, 68);
+}
