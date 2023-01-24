@@ -128,12 +128,24 @@ function ifDone() {
 }
 
 function correctNoise () {
-	let correctSound = Audio()
-	correctSound.play();
+    
+ const correctSound = new Audio(correct.wav);
+ correctSound.play();
+
 }
+function incorrectNoise () {
+    
+    const incorrectSound = new Audio(incorrect.wav);
+    incorrectSound.play();
+    console.log(incorrectSound);
+   }
+   
 
 
-function incorrectAnswer() {    
+
+
+function incorrectAnswer() { 
+   // incorrectNoise ()   
     time -= 10;
         result.textContent = "Incorrect!";
         result.setAttribute("style", "color: red; font-weight: bold; font-size: 40px; text-align: center;")
@@ -144,7 +156,7 @@ function incorrectAnswer() {
 function correct() {
    
     correctscore++;
-
+    correctNoise ()
     result.textContent = "Correct!";
     result.setAttribute("style", "color: green; font-weight: bold; font-size: 40px; text-align: center;")
 ifDone()
@@ -224,8 +236,6 @@ li4.addEventListener('mouseout', (event) => {
 
 function displayQuestion() {
 
- 
-
 
 questTitle.textContent = Questions[currentQ].question; 
 let option1 = Questions[currentQ].choices[0];
@@ -246,7 +256,7 @@ listEl.appendChild(li4);
 colorChoices()
 
 li1.addEventListener("click", function(){
-    console.log(option1)
+  
     userchoice = 0
     if (currentAnswer == 0)  {
         correct(li1)   }
@@ -257,7 +267,7 @@ li1.addEventListener("click", function(){
     }
     )
 li2.addEventListener("click", function(){
-    console.log(option2)
+ 
     userchoice = 1
     if (currentAnswer == 1)  {
         correct(li2)
@@ -270,7 +280,7 @@ li2.addEventListener("click", function(){
         )
     
 li3.addEventListener("click", function(){
-            console.log(option3)
+        
             userchoice = 2;
             if (currentAnswer == 2)  {
                 correct(li3)
@@ -284,7 +294,7 @@ li3.addEventListener("click", function(){
 li4.addEventListener("click", function(){
          
             userchoice = 3
-            console.log(userchoice)
+          
             if (currentAnswer == 3)  {
                 correct(li4)
                     return;

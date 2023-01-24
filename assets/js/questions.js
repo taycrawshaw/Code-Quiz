@@ -27,7 +27,7 @@ let Questions = [{
     question: 'Which type of language is JavaScript?',
     choices: ['Object oriented', 'Object based', 'Functional', 'Crash'],
     correctAnswer: 0
-},
+}
 
 
 
