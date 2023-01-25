@@ -129,23 +129,21 @@ function ifDone() {
 
 function correctNoise () {
     
- const correctSound = new Audio(correct.wav);
+ const correctSound = new Audio('./assets/sfx/correct.wav');
+ 
  correctSound.play();
 
 }
 function incorrectNoise () {
     
-    const incorrectSound = new Audio(incorrect.wav);
+    const incorrectSound = new Audio('./assets/sfx/incorrect.wav');
     incorrectSound.play();
-    console.log(incorrectSound);
+
    }
-   
-
-
 
 
 function incorrectAnswer() { 
-   // incorrectNoise ()   
+   incorrectNoise ()   
     time -= 10;
         result.textContent = "Incorrect!";
         result.setAttribute("style", "color: red; font-weight: bold; font-size: 40px; text-align: center;")
