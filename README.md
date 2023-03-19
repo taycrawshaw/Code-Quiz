@@ -3,6 +3,7 @@ Welcome to my JS fundamentals quiz!
 Test your knowledge and improve your skills with this timed quiz that covers the essential concepts of JavaScript. Track your progress and compare your scores with your peers with the locally saved highscores. 
 
 Usage
+
 Please follow live link here: https://matcrawshaw.github.io/Code-Quiz/
 Then select 'Start Quiz' and input answers when prompted. Incorrect answers will reduce time from the countdown.
 
